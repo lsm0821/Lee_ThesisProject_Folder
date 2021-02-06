@@ -110,6 +110,7 @@ public class MeshGenerator : MonoBehaviour
         mesh.RecalculateNormals(); //for lighting calculation. 
     }
 
+    /*
     private void OnDrawGizmos()
     {
         if (vertices == null)
@@ -120,5 +121,5 @@ public class MeshGenerator : MonoBehaviour
             Gizmos.DrawSphere(vertices[i], 0.1f);
         }
     }
-
+    */
 }
