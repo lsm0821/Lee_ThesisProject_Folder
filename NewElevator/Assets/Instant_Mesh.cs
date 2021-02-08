@@ -13,7 +13,7 @@ public class Instant_Mesh : MonoBehaviour
 
     public int xSize = 20;
     public int zSize = 20;
-
+    public int global_serialdata = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,7 @@ public class Instant_Mesh : MonoBehaviour
             for (int x = 0; x <= xSize; x++)
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 21f;
-                vertices[i] = new Vector3(x, y, z);
+                vertices[i] = new Vector3(x, y * global_serialdata/90, z);
                 i++;
             }
         }
@@ -99,6 +99,33 @@ public class Instant_Mesh : MonoBehaviour
         mesh.triangles = triangles;
 
         mesh.RecalculateNormals(); //for lighting calculation. 
+    }
+
+    void OnMessageArrived(string message)
+    {
+        Debug.Log(message);
+
+        int serialdata = System.Convert.ToInt32(message);
+        global_serialdata = serialdata;
+
+        CreateShape();
+
+        UpdateMesh();
+
+        /*if (midValue == 192)
+        {
+            midValue = System.Convert.ToInt32(message);
+        }*/
+
+        //GetComponent<Elevator>().speed = midValue - System.Convert.ToInt32(message);
+
+        //GetComponent<Elevator>().speed = System.Convert.ToInt32(message);
+
+    }
+
+    void OnConnectionEvent(bool success)
+    {
+        Debug.Log(success ? "Device Connected" : "Device disconnected");
     }
 
 }
