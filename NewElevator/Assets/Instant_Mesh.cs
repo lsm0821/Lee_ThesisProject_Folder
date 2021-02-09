@@ -21,14 +21,6 @@ public class Instant_Mesh : MonoBehaviour
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
 
-        Vector2[] uvs = new Vector2[vertices.Length];
-
-        for (int i = 0; i < uvs.Length; i++)
-        {
-            uvs[i] = new Vector2(vertices[i].x, vertices[i].z);
-        }
-
-        mesh.uv = uvs;
 
         CreateShape();
 
@@ -53,6 +45,7 @@ public class Instant_Mesh : MonoBehaviour
                 i++;
             }
         }
+
 
         triangles = new int[xSize * zSize * 6];
 
@@ -98,6 +91,7 @@ public class Instant_Mesh : MonoBehaviour
         };
         */
 
+
     }
 
     void UpdateMesh()
@@ -108,6 +102,16 @@ public class Instant_Mesh : MonoBehaviour
         mesh.triangles = triangles;
 
         mesh.RecalculateNormals(); //for lighting calculation. 
+
+        Color[] colors = new Color[vertices.Length];
+
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            colors[i] = Color.Lerp(Color.red, Color.green, vertices[i].y);
+            //colors[i] = Color.Lerp(Color.red, Color.green, .5f);
+        }
+
+        mesh.colors = colors;
     }
 
     void OnMessageArrived(string message)
