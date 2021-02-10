@@ -14,6 +14,9 @@ public class Instant_Mesh : MonoBehaviour
     public int xSize = 20;
     public int zSize = 20;
     public int global_serialdata = 0;
+    public int serialCounter = 0;
+    public int[] serialData;
+    serialData = new int[xSize * zSize];
 
     // Start is called before the first frame update
     void Start()
@@ -35,13 +38,13 @@ public class Instant_Mesh : MonoBehaviour
         vertices = new Vector3[(xSize + 1) * (zSize + 1)];
 
         //int i = 0;
-
         for (int i = 0, z = 0; z <= zSize; z++)
         {
             for (int x = 0; x <= xSize; x++)
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 21f;
-                vertices[i] = new Vector3(x, y * global_serialdata/90, z);
+                //vertices[i] = new Vector3(x, y * global_serialdata/90, z);
+                vertices[i] = new Vector3(x, y * serialData[i]/90, z);
                 i++;
             }
         }
@@ -120,6 +123,10 @@ public class Instant_Mesh : MonoBehaviour
 
         int serialdata = System.Convert.ToInt32(message);
         global_serialdata = serialdata;
+        serialData[serialCounter] = serialdata;
+        serialCounter++;
+        if(serialCounter > sSize * zSize)
+            serialCounter = 0;
 
         CreateShape();
 
