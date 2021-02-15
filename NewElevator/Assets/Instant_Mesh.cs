@@ -15,6 +15,15 @@ public class Instant_Mesh : MonoBehaviour
     public int zSize = 20;
     public int global_serialdata = 0;
 
+    public int serialCounter = 0;
+    public int[] serialData;
+
+    void Awake()
+    {
+        serialData = new int[xSize * zSize];
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,12 +45,13 @@ public class Instant_Mesh : MonoBehaviour
 
         //int i = 0;
 
-        for (int i = 0, z = 0; z <= zSize; z++)
+        for (int i = 0, z = 0; z < zSize; z++)
         {
-            for (int x = 0; x <= xSize; x++)
+            for (int x = 0; x < xSize; x++)
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 21f;
-                vertices[i] = new Vector3(x, y * global_serialdata/90, z);
+                //vertices[i] = new Vector3(x, y * global_serialdata/90, z);
+                vertices[i] = new Vector3(x, y * serialData[i]/90, z);
                 i++;
             }
         }
@@ -103,25 +113,34 @@ public class Instant_Mesh : MonoBehaviour
 
         mesh.RecalculateNormals(); //for lighting calculation. 
 
-        Color[] colors = new Color[vertices.Length];
 
-        for (int i = 0; i < vertices.Length; i++)
-        {
-            colors[i] = Color.Lerp(Color.red, Color.green, vertices[i].y);
-            //colors[i] = Color.Lerp(Color.red, Color.green, .5f);
-        }
-
-        mesh.colors = colors;
     }
 
     void OnMessageArrived(string message)
     {
         Debug.Log(message);
 
+        GameObject.FindGameObjectWithTag("Particle").GetComponent<Serial_Particle>().OnMessageArrived(message);
+
         int serialdata = System.Convert.ToInt32(message);
         global_serialdata = serialdata;
 
+        serialData[serialCounter] = serialdata;
+        serialCounter++;
+        if (serialCounter >= xSize * zSize)
+            serialCounter = 0;
+
         CreateShape();
+
+        Color[] colors = new Color[vertices.Length];
+
+        for (int i = 0; i < vertices.Length; i++)
+        {
+            colors[i] = Color.Lerp(Color.magenta, Color.blue, serialdata/100);
+            //colors[i] = Color.Lerp(Color.red, Color.green, .5f);
+        }
+        
+        mesh.colors = colors;
 
         UpdateMesh();
 
