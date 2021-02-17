@@ -20,8 +20,17 @@ public class Serial_Particle : MonoBehaviour
     {
         Debug.Log(message);
 
+        
+
         var main = gameObject.GetComponent<ParticleSystem>().main;
-        main.simulationSpeed = System.Convert.ToInt32(message);
+        var serial_income = System.Convert.ToInt32(message);
+        
+        main.simulationSpeed = serial_income/100;
+
+        GetComponent<ParticleSystemRenderer>().material.color = Color.Lerp(Color.red, Color.blue, serial_income/1023);
+
+        main.gravityModifier = (-1023 / 1.5f + serial_income)/200; //Change a range of gravity modifier. 
+
     }
 
     void OnConnectionEvent(bool success)

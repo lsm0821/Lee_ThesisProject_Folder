@@ -120,7 +120,7 @@ public class Instant_Mesh : MonoBehaviour
     {
         Debug.Log(message);
 
-        GameObject.FindGameObjectWithTag("Particle").GetComponent<Serial_Particle>().OnMessageArrived(message);
+        GameObject.FindGameObjectWithTag("Particle").GetComponent<Serial_Particle>().OnMessageArrived(message);  //controlling Particle System; script Serial_Particle
 
         int serialdata = System.Convert.ToInt32(message);
         global_serialdata = serialdata;
@@ -143,15 +143,6 @@ public class Instant_Mesh : MonoBehaviour
         mesh.colors = colors;
 
         UpdateMesh();
-
-        /*if (midValue == 192)
-        {
-            midValue = System.Convert.ToInt32(message);
-        }*/
-
-        //GetComponent<Elevator>().speed = midValue - System.Convert.ToInt32(message);
-
-        //GetComponent<Elevator>().speed = System.Convert.ToInt32(message);
 
     }
 
