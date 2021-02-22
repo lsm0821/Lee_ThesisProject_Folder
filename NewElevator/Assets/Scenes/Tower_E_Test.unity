@@ -976,7 +976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd72e20506e8e9945a01fa89d94187f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: NewSceneTest1
+  sceneName: Current_Project
 --- !u!1001 &587080595
 PrefabInstance:
   m_ObjectHideFlags: 0

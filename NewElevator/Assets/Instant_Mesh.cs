@@ -11,6 +11,8 @@ public class Instant_Mesh : MonoBehaviour
     Vector3[] vertices;
     int[] triangles;
 
+    public GameObject maze;
+
     public int xSize = 20;
     public int zSize = 20;
     public int global_serialdata = 0;
@@ -144,11 +146,17 @@ public class Instant_Mesh : MonoBehaviour
 
         UpdateMesh();
 
+        movingMaze(global_serialdata);
     }
 
     void OnConnectionEvent(bool success)
     {
         Debug.Log(success ? "Device Connected" : "Device disconnected");
+    }
+
+    void movingMaze(int data)
+    {
+        maze.transform.rotation = Quaternion.Euler(0, 0, global_serialdata);
     }
 
 }
