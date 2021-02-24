@@ -24,6 +24,7 @@ public class SceneTransition : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+            print(other.name);
         }
     }
 }
