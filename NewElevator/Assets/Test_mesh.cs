@@ -2,10 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(MeshFilter))]
-public class Instant_Mesh : MonoBehaviour
+public class Test_mesh : MonoBehaviour
 {
-
     Mesh mesh;
 
     Vector3[] vertices;
@@ -35,7 +33,9 @@ public class Instant_Mesh : MonoBehaviour
 
         CreateShape();
 
+        //CreateShape();
         UpdateMesh();
+
     }
 
 
@@ -52,7 +52,7 @@ public class Instant_Mesh : MonoBehaviour
             {
                 float y = Mathf.PerlinNoise(x * .3f, z * .3f) * 21f;
                 //vertices[i] = new Vector3(x, y * global_serialdata/90, z);
-                vertices[i] = new Vector3(x, y * serialData[i]/90, z);
+                vertices[i] = new Vector3(x, y * serialData[i] / 90, z);
                 i++;
             }
         }
@@ -117,18 +117,13 @@ public class Instant_Mesh : MonoBehaviour
 
     }
 
-    public void OnMessageArrived(int serialdata)
+    void OnMessageArrived(string message)
     {
-        /*
         Debug.Log(message);
 
-        GameObject.FindGameObjectWithTag("Particle").GetComponent<Serial_Particle>().OnMessageArrived(message);  //controlling Particle System; script Serial_Particle
-
-        GameObject.Find("TestingCube").GetComponent<Elevator>().OnMessageArrived(message);
+        //GameObject.FindGameObjectWithTag("Particle").GetComponent<Serial_Particle>().OnMessageArrived(message);  //controlling Particle System; script Serial_Particle
 
         int serialdata = System.Convert.ToInt32(message);
-        */
-
         global_serialdata = serialdata;
 
         serialData[serialCounter] = serialdata;
@@ -142,10 +137,10 @@ public class Instant_Mesh : MonoBehaviour
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            colors[i] = Color.Lerp(Color.magenta, Color.blue, serialdata/100);
+            colors[i] = Color.Lerp(Color.magenta, Color.blue, serialdata / 100);
             //colors[i] = Color.Lerp(Color.red, Color.green, .5f);
         }
-        
+
         mesh.colors = colors;
 
         UpdateMesh();
@@ -162,5 +157,4 @@ public class Instant_Mesh : MonoBehaviour
     {
         maze.transform.rotation = Quaternion.Euler(0, 0, global_serialdata);
     }
-
 }

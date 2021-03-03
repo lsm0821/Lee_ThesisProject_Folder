@@ -18,7 +18,12 @@ public class Elevator : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 1000, 0));
+        //GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 1000, 0));
         //transform.position += new Vector3(0, speed / 100, 0);
+    }
+
+    public void OnMessageArrived(int message)
+    {
+        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 1000, 0));
     }
 }
