@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/NeuralWorld_Room.unity
     guid: ba6d0cff8f320484eab4e9656eadbb1f
   - enabled: 1
-    path: Assets/Scenes/NeuralWorld_City.unity
+    path: Assets/Scenes/NeuralWorld_Final.unity
     guid: 62040ee0141bee74b883099885436ae0
   - enabled: 1
-    path: Assets/Scenes/NeuralWorld_FinalScene.unity
+    path: Assets/Scenes/NeuralWorld_City.unity
     guid: 07bb143bf97a6bf4881062c15ac3b95b
   m_configObjects: {}

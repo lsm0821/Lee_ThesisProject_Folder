@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd72e20506e8e9945a01fa89d94187f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneName: RoomScreen_2nd
+  sceneName: NeuralWorld_Room
 --- !u!65 &1969949309
 BoxCollider:
   m_ObjectHideFlags: 0
