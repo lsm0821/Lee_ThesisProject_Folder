@@ -24,6 +24,6 @@ public class Elevator : MonoBehaviour
 
     public void OnMessageArrived(int message)
     {
-        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 1000, 0));
+        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed, 0));
     }
 }

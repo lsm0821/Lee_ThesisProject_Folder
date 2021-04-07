@@ -21,6 +21,8 @@ public class DataListener : MonoBehaviour
         int serialdata = System.Convert.ToInt32(message);
 
         GetComponent<LightFlicker>().OnMessageReceived(serialdata);
+        GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevator>().OnMessageArrived(serialdata);
+        
 
         
     }

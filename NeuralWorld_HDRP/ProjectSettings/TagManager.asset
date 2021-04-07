@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Particle
   - LightFlicker
+  - Elevator
   layers:
   - Default
   - TransparentFX
