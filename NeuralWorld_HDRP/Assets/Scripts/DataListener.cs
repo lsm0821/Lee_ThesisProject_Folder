@@ -7,13 +7,13 @@ public class DataListener : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnMessageArrived(string message)
@@ -22,9 +22,8 @@ public class DataListener : MonoBehaviour
 
         GetComponent<LightFlicker>().OnMessageReceived(serialdata);
         GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevator>().OnMessageArrived(serialdata);
-        
 
-        
+
     }
 
     void OnConnectionEvent(bool success)
