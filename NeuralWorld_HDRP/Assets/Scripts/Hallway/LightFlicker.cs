@@ -15,11 +15,11 @@ public class LightFlicker : MonoBehaviour
 
     // Update is called once per frame
 
-    public void OnMessageReceived(int data)
+    public void OnMessageReceived(SerialData data)
     {
         foreach (GameObject Light in MainLight)
         {
-            Light.GetComponent<Light>().intensity = data;
+            Light.GetComponent<Light>().intensity = data.low_alpha;
         }
     }
 

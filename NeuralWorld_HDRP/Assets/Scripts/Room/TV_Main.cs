@@ -77,7 +77,7 @@ public class TV_Main : MonoBehaviour
 
     }
 
-    public void onMessageReceived(int value)
+    public void onMessageReceived(SerialData value)
     {
         if (currentChannel == 0 && TV_on == true)
         {

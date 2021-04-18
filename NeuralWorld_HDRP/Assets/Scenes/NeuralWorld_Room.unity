@@ -537,9 +537,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   channels:
-  - {fileID: 32900000, guid: 3f2e82ac4e656894fb2016697ca047a1, type: 3}
-  - {fileID: 32900000, guid: eceb0d9fb76e60148bb5dbf39597fdf4, type: 3}
-  - {fileID: 32900000, guid: a41206bd9574a9d4dae295f0c8aab290, type: 3}
+  - {fileID: 32900000, guid: 79ff1d7edf0a3694499d6e5f1882004d, type: 3}
+  - {fileID: 32900000, guid: 0c4828ab3d7a3d84390cf20dc7ec632e, type: 3}
+  - {fileID: 32900000, guid: a91f55dd3fd830249baad30620b86a63, type: 3}
   UI_Text: {fileID: 441360303}
   transition: {fileID: 1028660247}
 --- !u!1 &441360303

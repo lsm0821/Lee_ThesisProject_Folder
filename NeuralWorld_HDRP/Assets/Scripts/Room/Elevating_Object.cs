@@ -21,8 +21,8 @@ public class Elevating_Object : MonoBehaviour
         //transform.position += new Vector3(0, speed / 100, 0);
     }
 
-    public void OnMessageArrived(int message)
+    public void OnMessageArrived(SerialData data)
     {
-        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 150, 0));
+        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, data.meditation, 0));
     }
 }
