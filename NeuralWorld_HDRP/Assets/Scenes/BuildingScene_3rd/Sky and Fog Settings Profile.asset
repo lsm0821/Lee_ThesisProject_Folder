@@ -394,8 +394,8 @@ MonoBehaviour:
     m_Value: 2
     min: 0
   enableBackplate:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0
   backplateType:
     m_OverrideState: 0
     m_Value: 0

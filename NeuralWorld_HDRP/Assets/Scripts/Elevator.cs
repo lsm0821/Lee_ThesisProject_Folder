@@ -6,6 +6,8 @@ public class Elevator : MonoBehaviour
 {
 
     public float speed = 2;
+    public float meditationData;
+    public bool detect;
 
     Vector3 initialLocation;
 
@@ -20,10 +22,19 @@ public class Elevator : MonoBehaviour
     {
         //GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, speed / 1000, 0));
         //transform.position += new Vector3(0, speed / 100, 0);
+        if(detect == true)
+        {
+            transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, meditationData / 50, 0), Time.deltaTime);
+        }
     }
 
     public void OnMessageArrived(SerialData data)
     {
-        GetComponent<Rigidbody>().MovePosition(transform.position + new Vector3(0, data.meditation/20, 0));
+        meditationData = data.meditation;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        detect = true;
     }
 }

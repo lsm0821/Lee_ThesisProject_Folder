@@ -10,12 +10,13 @@ public class TV_Main : MonoBehaviour
     int currentChannel = 0;
     public GameObject UI_Text;
     public GameObject transition;
-    
+    public GameObject particle;
+    public LevitationControl controller;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        particle.SetActive(false);
     }
 
     // Update is called once per frame
@@ -81,7 +82,18 @@ public class TV_Main : MonoBehaviour
     {
         if (currentChannel == 0 && TV_on == true)
         {
-            GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevating_Object>().OnMessageArrived(value);
+            controller.floating = true;
+            controller.OnMessageArrived(value);
+
+            //GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevating_Object>().OnMessageArrived(value);
+            //GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevating_Object>().floating = true;
+        }
+
+        if (currentChannel == 1 && TV_on == true)
+        {
+            particle.SetActive(true);
+            controller.floating = false;
+
         }
 
         if (currentChannel == 2 && TV_on == true)

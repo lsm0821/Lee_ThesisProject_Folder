@@ -5,6 +5,7 @@ using UnityEngine;
 public class LightFlicker : MonoBehaviour
 {
     public GameObject[] MainLight;
+    public float alphaData;
 
 
     // Start is called before the first frame update
@@ -17,14 +18,14 @@ public class LightFlicker : MonoBehaviour
 
     public void OnMessageReceived(SerialData data)
     {
-        foreach (GameObject Light in MainLight)
-        {
-            Light.GetComponent<Light>().intensity = data.low_alpha;
-        }
+        alphaData = data.low_alpha;
     }
 
     void Update()
     {
-        
+        foreach (GameObject Light in MainLight)
+        {
+            Light.GetComponent<Light>().intensity = Mathf.Lerp(Light.GetComponent<Light>().intensity, alphaData, Time.deltaTime);
+        }
     }
 }

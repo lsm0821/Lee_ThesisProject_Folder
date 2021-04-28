@@ -34,8 +34,12 @@ public class DataListener_Room : MonoBehaviour
         compiledData.high_gamma = System.Convert.ToInt32(data[10]);
 
         //GetComponent<LightFlicker>().OnMessageReceived(serialdata);
-        GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevator>().OnMessageArrived(compiledData);
+        //GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevating_Object>().OnMessageArrived(compiledData);
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<TV_Main>().onMessageReceived(compiledData);
+        foreach (GameObject particle in GameObject.FindGameObjectsWithTag("Particle"))
+        {
+            particle.GetComponent<Serial_Particle>().OnMessageArrived(compiledData);
+        }
 
 
     }

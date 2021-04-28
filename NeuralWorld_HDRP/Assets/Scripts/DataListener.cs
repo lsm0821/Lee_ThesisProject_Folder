@@ -36,7 +36,11 @@ public class DataListener : MonoBehaviour
 
 
         GetComponent<LightFlicker>().OnMessageReceived(compiledData);
-        GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevator>().OnMessageArrived(compiledData);
+        if (GameObject.FindGameObjectWithTag("Elevator"))
+        {
+            GameObject.FindGameObjectWithTag("Elevator").GetComponent<Elevator>().OnMessageArrived(compiledData);
+        }
+        
 
 
     }
